@@ -24,6 +24,45 @@ def tabuleiro(matriz):
             result[n] = string
         return result
 
+    def Encontra_Rainhas(matriz):
+        result = []
+        for linha in matriz:
+            result.append((matriz.index(linha), linha.index('1')))
+        return result
+
+    def Diagonais(lista):
+        d = []
+        for rainha in lista:
+            linha = rainha[0]
+            coluna = rainha[1]
+            
+            i,j = linha, coluna
+            while 0 <= i <= 7 and 0 <= j <= 7:
+                if (i,j) != (linha,coluna):
+                    d.append((i,j))
+                i+=1
+                j+=1
+            i,j = linha, coluna
+            while 0 <= i <= 7 and 0 <= j <= 7:
+                if (i,j) != (linha,coluna):
+                    d.append((i,j))
+                i-=1
+                j-=1
+            i,j = linha, coluna
+            while 0 <= i <= 7 and 0 <= j <= 7:
+                if (i,j) != (linha,coluna):
+                    d.append((i,j))
+                i-=1
+                j+=1
+            i,j = linha, coluna
+            while 0 <= i <= 7 and 0 <= j <= 7:
+                if (i,j) != (linha,coluna):
+                    d.append((i,j))
+                i+=1
+                j-=1
+            
+        return d
+
     if not Valida_Formato(matriz):
         return -1
     
@@ -37,4 +76,11 @@ def tabuleiro(matriz):
         if linha.count('1') != 1:
             return 0
     
+    posicao_rainhas = Encontra_Rainhas(matriz)
+    diagonais = Diagonais(posicao_rainhas)
+    
+    for rainha in posicao_rainhas:
+        if rainha in diagonais:
+            return 0
+
     return 1
