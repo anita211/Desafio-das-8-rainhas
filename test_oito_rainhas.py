@@ -53,6 +53,15 @@ jogo_falho_diagonal = ['00000001',
                '01000000',
                '10000000']
 
+jogo_solucao = ['00001000',
+               '01000000',
+               '00010000',
+               '00000010',
+               '00100000',
+               '00000001',
+               '00000100',
+               '10000000']
+
 def test_quando_tabuleiro_recebe_jogo_invalido_tamanho_deve_retornar_menos_1():
     assert tabuleiro(jogo_invalido_tamanho)==-1
 
@@ -70,3 +79,6 @@ def test_quando_tabuleiro_recebe_jogo_falho_coluna_deve_retornar_0():
 
 def test_quando_tabuleiro_recebe_jogo_falho_diagonal_deve_retornar_0():
     assert tabuleiro(jogo_falho_diagonal)==0
+
+def test_quando_tabuleiro_recebe_jogo_solucao_deve_retornar_1():
+    assert tabuleiro(jogo_solucao)==1
