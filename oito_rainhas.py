@@ -3,6 +3,9 @@ def tabuleiro(matriz):
     def Valida_Formato(matriz):
         if len(matriz) != 8:
             return False
+        for linha in matriz:
+            if len(linha) != 8:
+                return False
         return True
 
     if not Valida_Formato(matriz):
